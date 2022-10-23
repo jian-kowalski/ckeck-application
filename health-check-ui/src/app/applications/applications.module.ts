@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ApplicationsRoutingModule } from './applications-routing.module';
 import { ApplicationsListComponent } from './components/applications-list/applications-list.component';
+import { ApplicationFormComponent } from './containers/application-form/application-form.component';
 
 
 
 @NgModule({
   declarations: [
     ApplicationsComponent,
-    ApplicationsListComponent
+    ApplicationsListComponent,
+    ApplicationFormComponent
   ],
   imports: [
     CommonModule,

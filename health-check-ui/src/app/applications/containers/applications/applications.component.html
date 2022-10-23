@@ -6,7 +6,8 @@
 
   <mat-card-content>
     <div class="column-flex mat-elevation-z8">
-      <app-applications-list *ngIf="applications$ | async as applications; else loading" [applications]="applications">
+      <app-applications-list *ngIf="applications$ | async as applications; else loading" [applications]="applications"
+      (add)="onAdd()">
 
       </app-applications-list>
      <!-- <app-clients-list *ngIf="clients$ | async as clients; else loading" [clients]="clients" (add)="onAdd()"

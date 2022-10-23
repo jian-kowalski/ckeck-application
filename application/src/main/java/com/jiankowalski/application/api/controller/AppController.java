@@ -6,10 +6,10 @@ import com.jiankowalski.application.api.model.AppModel;
 import com.jiankowalski.application.api.model.input.AppCreate;
 import com.jiankowalski.application.api.model.input.AppUpdate;
 import com.jiankowalski.application.domain.service.AppManagementService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +28,7 @@ public class AppController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AppModel create(@RequestBody @Valid AppCreate appCreate) {
-        var app = appManagementService.save(appMapper.inputToDomain(appCreate));
+        var app = appManagementService.create(appMapper.inputToDomain(appCreate));
         return appMapper.domainToModel(app);
     }
 
@@ -37,7 +37,7 @@ public class AppController {
                            @RequestBody @Valid AppUpdate appUpdate) {
         var appSalved = appManagementService.findById(appId);
         appMapper.update(appSalved, appUpdate);
-        return appMapper.domainToModel(appManagementService.save(appSalved));
+        return appMapper.domainToModel(appManagementService.update(appSalved));
     }
 
     @GetMapping("/{appId}")

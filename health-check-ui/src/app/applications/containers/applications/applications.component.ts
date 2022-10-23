@@ -1,3 +1,4 @@
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { ApplicationService } from './../../services/ApplicationService';
 
 import { Application } from './../../model/Application';
@@ -13,11 +14,16 @@ export class ApplicationsComponent implements OnInit {
 
   applications$: Observable<Application[]>;
 
-  constructor(private service: ApplicationService,) {
+  constructor(private service: ApplicationService, private router: Router, private route: ActivatedRoute) {
     this.applications$ = service.list();
   }
 
+
   ngOnInit(): void {
+  }
+
+   onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 
 }

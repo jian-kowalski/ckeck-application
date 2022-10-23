@@ -11,14 +11,20 @@ import java.util.UUID;
 public class AppManagementService {
 
     private final ApplicationRepository applicationRepository;
+    private final AppEventGateway eventGateway;
 
-    public AppManagementService(ApplicationRepository applicationRepository) {
+    public AppManagementService(ApplicationRepository applicationRepository, AppEventGateway eventGateway) {
         this.applicationRepository = applicationRepository;
+        this.eventGateway = eventGateway;
     }
 
-    public App save(App app){
-        return  applicationRepository.save(app);
-
+    public App create(App app){
+        var appCreated = save(app);
+        eventGateway.sendAppCreatedEvent(appCreated);
+        return appCreated;
+    }
+    private App save(App app){
+        return applicationRepository.save(app);
     }
 
     public App findById(UUID appId) {
@@ -27,5 +33,11 @@ public class AppManagementService {
 
     public List<App> getAll() {
         return applicationRepository.findAll();
+    }
+
+    public App update(App app) {
+        var appUpdated = save(app);
+        eventGateway.sendAppUpdatedEvent(appUpdated);
+        return appUpdated;
     }
 }
