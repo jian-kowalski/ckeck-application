@@ -1,22 +1,15 @@
 package com.jiankowalski.application.domain.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.*;
 
-import org.hibernate.annotations.Type;
-import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
-@Entity
+@Entity(name = "ttr_app")
 public class Application {
     @Id
-    @GeneratedValue( generator = "uuid2" )
-    @GenericGenerator( name = "uuid2", strategy = "uuid2" )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "char(36)")
     private UUID id;
     private String name;
