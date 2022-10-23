@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("apps")
+@RequestMapping("/api/apps")
 public class AppController {
     private final AppManagementService appManagementService;
 

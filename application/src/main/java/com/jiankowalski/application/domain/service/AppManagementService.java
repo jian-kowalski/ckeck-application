@@ -1,6 +1,6 @@
 package com.jiankowalski.application.domain.service;
 
-import com.jiankowalski.application.domain.model.Application;
+import com.jiankowalski.application.domain.model.App;
 import com.jiankowalski.application.domain.repository.ApplicationRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +16,16 @@ public class AppManagementService {
         this.applicationRepository = applicationRepository;
     }
 
-    public Application save(Application app){
+    public App save(App app){
         return  applicationRepository.save(app);
 
     }
 
-    public Application findById(UUID appId) {
-        return applicationRepository.findById(appId).orElseThrow(() -> new RuntimeException());
+    public App findById(UUID appId) {
+        return applicationRepository.findById(appId).orElseThrow(RuntimeException::new);
     }
 
-    public List<Application> getAll() {
+    public List<App> getAll() {
         return applicationRepository.findAll();
     }
 }

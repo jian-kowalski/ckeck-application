@@ -3,7 +3,7 @@ package com.jiankowalski.application.api.mapper;
 import com.jiankowalski.application.api.model.AppModel;
 import com.jiankowalski.application.api.model.input.AppCreate;
 import com.jiankowalski.application.api.model.input.AppUpdate;
-import com.jiankowalski.application.domain.model.Application;
+import com.jiankowalski.application.domain.model.App;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
@@ -11,11 +11,11 @@ import java.util.List;
 
 @Mapper
 public interface AppMapper {
-    Application inputToDomain(AppCreate appCreate);
+    App inputToDomain(AppCreate appCreate);
 
-    AppModel domainToModel(Application app);
+    AppModel domainToModel(App app);
 
-    void update(@MappingTarget Application byId, AppUpdate app);
+    void update(@MappingTarget App byId, AppUpdate app);
 
-    List<AppModel> domainsToModels(List<Application> apps);
+    List<AppModel> domainsToModels(List<App> apps);
 }

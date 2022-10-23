@@ -7,23 +7,22 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity(name = "ttr_app")
-public class Application {
+public class App {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "char(36)")
+    @GeneratedValue
     private UUID id;
     private String name;
     private String address;
 
-    public Application(UUID id, String name, String address) {
+    protected App(){
+
+    }
+
+    public App(UUID id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
-    }
-
-    public void update(Application app) {
-        this.name = app.getName();
-        this.address = app.getAddress();
     }
 
     public UUID getId() {

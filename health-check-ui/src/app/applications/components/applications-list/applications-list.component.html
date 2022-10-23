@@ -1,0 +1,40 @@
+<mat-table [dataSource]="applications" >
+
+  <!--- Note that these columns can be defined in any order.
+    The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell  *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-cell  *matCellDef="let app"> {{app.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="address">
+    <mat-header-cell  *matHeaderCellDef> Endereço </mat-header-cell>
+    <mat-cell *matCellDef="let app"> {{app.address}} </mat-cell>
+  </ng-container>
+
+  <!-- actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-icon-button color="primary" aria-label="Adicionar uma nova aplicação">
+        <mat-icon (click)="onAdd()">add</mat-icon>
+      </button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let app" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Editar a aplicação">
+        <mat-icon (click)="onEdit(app)">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Remover a aplicação">
+        <mat-icon (click)="onDelete(app)">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
